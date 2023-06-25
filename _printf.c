@@ -11,6 +11,8 @@
 
 int _printf(const char *format, ...)
 {
+	if (format == NULL)
+		_putstr("(null)");
 	va_list args;
 	int count = 0;
 
@@ -33,9 +35,7 @@ int _printf(const char *format, ...)
 				case '%':
 					count += _putchar('%');
 					break;
-				case 'z':
-					count += _putstr("Invalid format specifier");
-					break;
+
 				default:
 					count += _putchar('%');
 					count += _putchar(*format);
@@ -49,7 +49,6 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-
 	return (count);
 }
 
