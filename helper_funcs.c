@@ -14,12 +14,14 @@
 int _putstr(char *str)
 {
 	int len = 0;
-	char *ptr = str;
-
-	while (*ptr != '\0')
+	
+	while (*str != '\0')
 	{
-		len += _putchar(*ptr);
-		ptr++;
+		if (_putchar(*str) == -1)
+			return (-1);
+
+		len++;
+		str++;
 	}
 
 	return (len);
