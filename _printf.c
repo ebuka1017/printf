@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _printf - custom printf function
@@ -11,6 +12,8 @@
 
 int _printf(const char *format, ...)
 {
+	null_checker(format);
+
 	va_list args;
 	int count = 0;
 
@@ -44,10 +47,8 @@ int _printf(const char *format, ...)
 		{
 			count += _putchar(*format);
 		}
-
 		format++;
 	}
-
 	va_end(args);
 
 	return (count);

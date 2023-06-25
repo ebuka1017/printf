@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _putstr - writes str to stdo
@@ -23,5 +24,17 @@ int _putstr(char *str)
 	}
 
 	return (len);
+}
+
+/**
+ * null_checker - checks if format == null
+ *
+ * Return: -1
+ */
+
+int null_checker(char c)
+{
+	if (c == NULL)
+		return (-1);
 }
 
