@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 /**
  * _printf - custom printf function
@@ -13,7 +12,7 @@
 int _printf(const char *format, ...)
 {
 	if (format == NULL)
-		_putstr("(null)");
+		return (-1);
 	va_list args;
 	int count = 0;
 
