@@ -10,45 +10,45 @@
 
 int _printf(const char *format, ...)
 {
-	if (format == NULL)
-		return (-1);
-
-	va_list args;
-	int count = 0;
-
-	va_start(args, format);
-
-	while (*format != '\0')
+	if (format != NULL)
 	{
-		if (*format == '%')
-		{
-			format++;
+		va_list args;
+		int count = 0;
 
-			switch (*format)
+		va_start(args, format);
+
+		while (*format != '\0')
+		{
+			if (*format == '%')
 			{
-				case 'c':
-					count += _putchar(va_arg(args, int));
-					break;
-				case 's':
-					count += _putstr(va_arg(args, char *));
-					break;
-				case '%':
-					count += _putchar('%');
-					break;
-
-				default:
-					count += _putchar('%');
-					count += _putchar(*format);
-					break;
+				format++;
+				switch (*format)
+				{
+					case 'c':
+						count += _putchar(va_arg(args, int));
+						break;
+					case 's':
+						count += _putstr(va_arg(args, char *));
+						break;
+					case '%':
+						count += _putchar('%');
+						break;
+					default:
+						count += _putchar('%');
+						count += _putchar(*format);
+						break;
+				}
 			}
+			else
+			{
+				count += _putchar(*format);
+			}
+			format++;
 		}
-		else
-		{
-			count += _putchar(*format);
-		}
-		format++;
+		va_end(args);
+		return (count);
 	}
-	va_end(args);
-	return (count);
+	else
+		return (-1);
 }
 
