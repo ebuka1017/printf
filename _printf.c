@@ -33,7 +33,9 @@ int _printf(const char *format, ...)
 				case '%':
 					count += _putchar('%');
 					break;
-
+				case 'z':
+					count += _putstr("Invalid format specifier");
+					break;
 				default:
 					count += _putchar('%');
 					count += _putchar(*format);
