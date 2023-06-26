@@ -68,3 +68,42 @@ int handle_specifier(char specifier, va_list args)
 	}
 }
 
+
+
+/**
+ * _putnbr - Print an integer to stdout
+ * @n: The integer to print
+ *
+ * Return: Number of characters printed
+ */
+int _putnbr(int n)
+{
+	int count = 0;
+	int digit, sign;
+
+	if (n == 0)
+	{
+		count += _putchar('0');
+		return (count);
+	}
+
+	if (n < 0)
+	{
+		sign = -1;
+		count += _putchar('-');
+	}
+	else
+	{
+		sign = 1;
+	}
+
+	digit = n % 10;
+	if (digit < 0)
+		digit *= -1;
+
+	count += _putnbr(n / 10);
+	count += _putchar('0' + digit);
+
+	return (count);
+}
+
