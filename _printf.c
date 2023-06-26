@@ -34,11 +34,10 @@ int _printf(const char *format, ...)
 					count += _putstr(va_arg(args, char *));
 					break;
 				case '%':
-					count += _putstr("%%");
+					count += _putchar('%');
 					break;
-
 				default:
-					count += _putstr("%%");
+					count += _putchar('%');
 					count += _putchar(*format);
 					break;
 			}
@@ -50,6 +49,7 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
+	_putchar('\n');
 	return (count);
 }
 
