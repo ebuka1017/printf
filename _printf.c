@@ -26,20 +26,17 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '%')
 				count += _putchar('%');
+			else if (*format == 'c')
+				count += _putchar(va_arg(args, int));
+			else if (*format == 's')
+				count += _putstr(va_arg(args, char *));
+			else if (*format == 'd' || *format == 'i')
+				count += _putnbr(va_arg(args, int));
 			else
-				switch (*format)
-				{
-					case 'c':
-						count += _putchar(va_arg(args, int));
-						break;
-					case 's':
-						count += _putstr(va_arg(args, char *));
-						break;
-					default:
-						count += _putchar('%');
-						count += _putchar(*format);
-						break;
-				}
+			{
+				count += _putchar('%');
+				count += _putchar(*format);
+			}
 		}
 		else
 		{
