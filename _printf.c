@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	_putchar('\n');
+	count += _putchar('\n');
 	return (count);
 }
 
