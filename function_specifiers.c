@@ -19,7 +19,7 @@ int process_format_specifier(char specifier, va_list args)
 		case 's':
 			return (print_string(args));
 		case '%':
-			return (print_percent());
+			return (print_percent(args));
 		default:
 			return (handle_unknown_specifier(specifier));
 	}

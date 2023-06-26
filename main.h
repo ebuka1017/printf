@@ -1,6 +1,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#include <stdarg.h>
+
 /**
  * _printf - Custom printf
  * @format: format string
