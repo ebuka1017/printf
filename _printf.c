@@ -1,93 +1,66 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <unistd.h>
 
-int process_format_specifier(char specifier, va_list args);
-int handle_unknown_specifier(char specifier);
+void print_buffer(char buffer[], int *buff_ind);
 
 /**
- * _printf - custom printf function
- * @format: format string
- *
- * Return: number of characters printed
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars.
  */
-
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int count = 0;
-	int i;
+	int i, printed = 0, printed_chars = 0;
+	int flags, width, precision, size, buff_ind = 0;
+	va_list list;
+	char buffer[BUFF_SIZE];
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(args, format);
+	va_start(list, format);
 
-	for (i = 0; format[i]; i++)
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			count += _putchar(format[i]);
+			buffer[buff_ind++] = format[i];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
+			/* write(1, &format[i], 1);*/
+			printed_chars++;
 		}
 		else
 		{
-			i++;
-			if (format[i] == '\0')
+			print_buffer(buffer, &buff_ind);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			printed = handle_print(format, &i, list, buffer,
+				flags, width, precision, size);
+			if (printed == -1)
 				return (-1);
-
-			if (format[i] == '%')
-			{
-				count += _putchar('%');
-			}
-			else
-			{
-				count += process_format_specifier(format[i], args);
-			}
+			printed_chars += printed;
 		}
 	}
 
-	va_end(args);
+	print_buffer(buffer, &buff_ind);
 
-	return (count);
+	va_end(list);
+
+	return (printed_chars);
 }
 
 /**
- * process_format_specifier - Process the format specifier and call the
- * corresponding printing function.
- * @specifier: The format specifier character.
- * @args: The va_list containing the function arguments.
- *
- * Return: The number of characters printed.
+ * print_buffer - Prints the contents of the buffer if it exist
+ * @buffer: Array of chars
+ * @buff_ind: Index at which to add next char, represents the length.
  */
-int process_format_specifier(char specifier, va_list args)
+void print_buffer(char buffer[], int *buff_ind)
 {
-        switch (specifier)
-        {
-                case 'c':
-                        return (print_char(args));
-                case 's':
-                        return (print_string(args));
-                case '%':
-                        return (print_percent(args));
-                default:
-                        return (handle_unknown_specifier(specifier));
-        }
-}
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
 
-/**
- * handle_unknown_specifier - Handle unknown format specifier by printing
- * a percent sign followed by the specifier character.
- * @specifier: The unknown format specifier character.
- *
- * Return: The number of characters printed.
- */
-int handle_unknown_specifier(char specifier)
-{
-        int count = 0;
-        count += _putchar('%');
-        count += _putchar(specifier);
-        return (count);
+	*buff_ind = 0;
 }
-
