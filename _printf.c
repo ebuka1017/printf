@@ -14,6 +14,9 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
 
 	while (*format != '\0')
@@ -31,7 +34,7 @@ int _printf(const char *format, ...)
 					count += _putstr(va_arg(args, char *));
 					break;
 				case '%':
-					count += _putchar('%');
+					count += write(1, "%%", 1);
 					break;
 
 				default:
@@ -44,12 +47,9 @@ int _printf(const char *format, ...)
 		{
 			count += _putchar(*format);
 		}
-
 		format++;
 	}
-
 	va_end(args);
-
 	return (count);
 }
 
