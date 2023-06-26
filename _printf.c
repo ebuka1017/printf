@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -35,7 +34,7 @@ int _printf(const char *format, ...)
 					count += _putstr(va_arg(args, char *));
 					break;
 				case '%':
-					count += write(1, "%%", 1);
+					count += _putstr("%%");
 					break;
 
 				default:
