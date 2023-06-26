@@ -1,7 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
-
-#include <stdarg.h>
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 /**
  * _printf - Custom printf
