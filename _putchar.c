@@ -1,15 +1,15 @@
 #include <unistd.h>
 
 /**
- * _putchar - prints char to standard output
+ * _putchar - writes a character to standard output
+ * @c: character to write
  *
- * @c: char to compare
- *
- * Return: char
+ * Return: 0 or 1
  */
 
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
 
