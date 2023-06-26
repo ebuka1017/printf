@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 
@@ -15,7 +16,7 @@ int _printf(const char *format, ...)
 	int count = 0;
 
 	if (format == NULL)
-		format = "(null)";
+		return (-1);
 
 	va_start(args, format);
 
