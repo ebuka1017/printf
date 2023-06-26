@@ -26,16 +26,9 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '%')
 				count += _putchar('%');
-			else if (*format == 'c')
-				count += _putchar(va_arg(args, int));
-			else if (*format == 's')
-				count += _putstr(va_arg(args, char *));
-			else if (*format == 'd' || *format == 'i')
-				count += _putnbr(va_arg(args, int));
 			else
 			{
-				count += _putchar('%');
-				count += _putchar(*format);
+				count += handle_specifier(*format, args);
 			}
 		}
 		else
@@ -46,5 +39,32 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
+}
+
+
+/**
+ * handle_specifier - handle conversion specifier
+ * @specifier: the conversion specifier character
+ * @args: va_list args
+ *
+ * Return: number of chars printed
+ */
+
+int handle_specifier(char specifier, va_list args)
+{
+	switch (specifier)
+	{
+		case 'c':
+			return (_putchar(va_arg(args, int)));
+		case 's':
+			return (_putstr(va_arg(args, char *)));
+		case 'd':
+		case 'i':
+			return (_putnbr(va_arg(args, int)));
+		default:
+			_putchar('%');
+			_putchar(specifier);
+			return (2);
+	}
 }
 
