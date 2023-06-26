@@ -24,32 +24,28 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-
-			switch (*format)
-			{
-				case 'c':
-					count += _putchar(va_arg(args, int));
-					break;
-				case 's':
-					count += _putstr(va_arg(args, char *));
-					break;
-				case '%':
-					count += _putchar('%');
-					break;
-				default:
-					count += _putchar('%');
-					count += _putchar(*format);
-					break;
-			}
+			if (*format == '%')
+				count += _putchar('%');
+			else
+				switch (*format)
+				{
+					case 'c':
+						count += _putchar(va_arg(args, int));
+						break;
+					case 's':
+						count += _putstr(va_arg(args, char *));
+						break;
+					default:
+						count += _putchar('%');
+						count += _putchar(*format);
+						break;
+				}
 		}
 		else
 		{
 			count += _putchar(*format);
 		}
 		format++;
-
-		if (*format == '\0')
-			break;
 	}
 	va_end(args);
 	return (count);
