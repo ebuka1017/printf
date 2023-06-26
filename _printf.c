@@ -49,7 +49,6 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(args);
-	count += _putchar('\n');
 	return (count);
 }
 
