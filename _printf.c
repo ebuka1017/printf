@@ -107,3 +107,35 @@ int _putnbr(int n)
 	return (count);
 }
 
+/**
+ * _putchar - print char to stdo
+ * @c: character to compare
+ *
+ * Return: 0 or 1
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _putstr - puts string to stdo
+ * @str: string to print
+ *
+ * Return: len of str
+ */
+
+int _putstr(char *str)
+{
+	int len = 0;
+	char *ptr = str;
+
+	while (*ptr != '\0')
+	{
+	len += _putchar(*ptr);
+	ptr++;
+	}
+
+	return (len);
+}
