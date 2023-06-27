@@ -22,120 +22,32 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
-		{
 			format++;
-			if (*format == '%')
-				count += _putchar('%');
-			else
+
+			switch (*format)
 			{
-				count += handle_specifier(*format, args);
+				case 'c':
+					count += _putchar(va_arg(args, int));
+					break;
+				case 's':
+					count += _putstr(va_arg(args, char *));
+					break;
+				case 'd':
+				case 'i':
+					count += _putnbr(va_arg(args, int));
+				case '%':
+					count += _putchar('%');
+					break;
+				default:
+					count += _putchar('%');
+					count += _putchar(*format);
+					break;
 			}
-		}
 		else
-		{
 			count += _putchar(*format);
-		}
 		format++;
 	}
 	va_end(args);
 	return (count);
 }
 
-
-/**
- * handle_specifier - handle conversion specifier
- * @specifier: the conversion specifier character
- * @args: va_list args
- *
- * Return: number of chars printed
- */
-
-int handle_specifier(char specifier, va_list args)
-{
-	switch (specifier)
-	{
-		case 'c':
-			return (_putchar(va_arg(args, int)));
-		case 's':
-			return (_putstr(va_arg(args, char *)));
-		case 'd':
-		case 'i':
-			return (_putnbr(va_arg(args, int)));
-		default:
-			_putchar('%');
-			_putchar(specifier);
-			return (2);
-	}
-}
-
-
-
-/**
- * _putnbr - Print an integer to stdout
- * @n: The integer to print
- *
- * Return: Number of characters printed
- */
-int _putnbr(int n)
-{
-	int count = 0;
-	int digit, sign;
-
-	if (n == 0)
-	{
-		count += _putchar('0');
-		return (count);
-	}
-
-	if (n < 0)
-	{
-		sign = -1;
-		count += _putchar('-');
-	}
-	else
-	{
-		sign = 1;
-	}
-
-	digit = n % 10;
-	if (digit < 0)
-		digit *= -1;
-
-	count += _putnbr(n / 10);
-	count += _putchar('0' + digit);
-
-	return (count);
-}
-
-/**
- * _putchar - print char to stdo
- * @c: character to compare
- *
- * Return: 0 or 1
- */
-
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
- * _putstr - puts string to stdo
- * @str: string to print
- *
- * Return: len of str
- */
-
-int _putstr(char *str)
-{
-	int len = 0;
-	char *ptr = str;
-
-	while (*ptr != '\0')
-	{
-	len += _putchar(*ptr);
-	ptr++;
-	}
-
-	return (len);
-}
