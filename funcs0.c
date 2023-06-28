@@ -125,6 +125,8 @@ int specifier(const char *format, va_list args)
 			space_flag = 1;
 		else if (*format == '#')
 			hash_flag = 1;
+		else
+			break;
 
 		format++;
 	}
