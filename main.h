@@ -9,6 +9,10 @@ int _putstr(char *str);
 int _putnbr(int n);
 int _putbin(unsigned int n);
 int specifier(const char *format, va_list args);
+int _unsined(unsigned int n);
+int _putoctal(unsigned int n);
+int _puthex(unsigned int n, int upper);
+
 
 #endif
 

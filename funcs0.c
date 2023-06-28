@@ -129,6 +129,18 @@ int specifier(const char *format, va_list args)
 		case 'b':
 			count += _putbin(va_arg(args, unsigned int));
 			break;
+		case 'u':
+			count += _unsined(va_arg(args, unsigned int));
+			break;
+		case 'o':
+			count += _putoctal(va_arg(args, unsigned int));
+			break;
+		case 'x':
+			count += _puthex(va_arg(args, unsigned int), 0);
+			break;
+		case 'X':
+			count += _puthex(va_arg(args, unsigned int), 1);
+			break;
 		case '%':
 			count += _putchar('%');
 			break;
