@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _putchar - prints char to standard output
@@ -80,4 +81,63 @@ int _putnbr(int n)
 	return (count);
 }
 
+/**
+ * _putbin - converts unsigned int to binary
+ * @n: int to convert
+ *
+ * Return: converted bin
+ */
+
+int _putbin(unsigned int n)
+{
+	int count = 0;
+
+	if (n >= 2)
+	{
+		count += _putbin(n / 2);
+	}
+
+	count += _putchar('0' + (n % 2));
+
+	return (count);
+}
+
+/**
+ * specifier - handles the switch case logic for specifiers
+ * @format: format string
+ * @args: va_list of args
+ *
+ * Return: number of characters printed
+ */
+
+int specifier(const char *format, va_list args)
+{
+	int count = 0;
+
+	switch (*format)
+	{
+		case 'c':
+			count += _putchar(va_arg(args, int));
+			break;
+		case 's':
+			count += _putstr(va_arg(args, char *));
+			break;
+		case 'd':
+		case 'i':
+			count += _putnbr(va_arg(args, int));
+			break;
+		case 'b':
+			count += _putbin(va_arg(args, unsigned int));
+			break;
+		case '%':
+			count += _putchar('%');
+			break;
+		default:
+			count += _putchar('%');
+			count += _putchar(*format);
+			break;
+	}
+
+	return (count);
+}
 
