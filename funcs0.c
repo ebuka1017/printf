@@ -34,7 +34,7 @@ int _putstr(char *str)
  */
 int _putnbr(int n)
 {
-	int i;
+	int i = 0;
 	int base = 10;
 	int count = 0;
 	int digit[10];
