@@ -141,6 +141,27 @@ int specifier(const char *format, va_list args)
 		case 'X':
 			count += _puthex(va_arg(args, unsigned int), 1);
 			break;
+		case 'S':
+		{
+			char *str = va_arg(args, char *);
+			int i = 0;
+
+			while (str[i] != '\0')
+			{
+				if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+				{
+					count += _putstr("\\x");
+					count += _puthex(str[i], 1);
+				}
+				else
+					count += _putchar(str[i]);
+				i++;
+			}
+			break;
+		}
+		case 'p':
+			count += _putptr(va_arg(args, void *));
+			break;
 		case '%':
 			count += _putchar('%');
 			break;

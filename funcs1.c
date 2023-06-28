@@ -69,4 +69,43 @@ int _puthex(unsigned int n, int upper)
 	return (count);
 }
 
+/**
+ * _puts - writes a string to stdo
+ * @str: string to print
+ *
+ * Return: number of chars printed
+ */
+
+int _puts(char *str)
+{
+	int count = 0;
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		count += _putchar(str[i]);
+		i++;
+	}
+
+	return (count);
+}
+
+/**
+ * _putptr - writes a pointer to stdo
+ * @ptr: ptr to print
+ *
+ * Return: number of chars printed
+ */
+
+int _putptr(void *ptr)
+{
+	int count = 0;
+	unsigned long int address = (unsigned long int)ptr;
+
+	count += _putstr("0x");
+	count += _puthex(address, 0);
+
+	return (count);
+}
+
 
