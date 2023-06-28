@@ -4,6 +4,19 @@
 #include "main.h"
 
 /**
+ * _putchar - prints char to standard output
+ *
+ * @c: char to compare
+ *
+ * Return: char
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
  * _putstr - writes str to stdo
  *
  * @str: str
@@ -66,4 +79,5 @@ int _putnbr(int n)
 
 	return (count);
 }
+
 
