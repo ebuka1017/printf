@@ -113,23 +113,6 @@ int _putbin(unsigned int n)
 int specifier(const char *format, va_list args)
 {
 	int count = 0;
-	int plus_flag = 0;
-	int space_flag = 0;
-	int hash_flag = 0;
-
-	while (*format == '+' || *format == ' ' || *format == '#')
-	{
-		if (*format == '+')
-			plus_plus = 1;
-		else if (*format == ' ')
-			space_flag = 1;
-		else if (*format == '#')
-			hash_flag = 1;
-		else
-			break;
-
-		format++;
-	}
 
 	switch (*format)
 	{
