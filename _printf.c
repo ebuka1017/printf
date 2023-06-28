@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%')
+		{
 			format++;
 
 			switch (*format)
@@ -40,10 +41,9 @@ int _printf(const char *format, ...)
 					count += _putchar('%');
 					break;
 				default:
-					count += _putchar('%');
-					count += _putchar(*format);
 					break;
 			}
+		}
 		else
 			count += _putchar(*format);
 		format++;

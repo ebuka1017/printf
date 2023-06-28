@@ -34,8 +34,16 @@ int _putstr(char *str)
  */
 int _putnbr(int n)
 {
+	int i;
+	int base = 10;
 	int count = 0;
-	int digit, sign;
+	int digit[10];
+
+	if (n < 0)
+	{
+		count += _putchar('-');
+		n = -n;
+	}
 
 	if (n == 0)
 	{
@@ -43,22 +51,18 @@ int _putnbr(int n)
 		return (count);
 	}
 
-	if (n < 0)
+	while (n > 0)
 	{
-		sign = -1;
-		count += _putchar('-');
-	}
-	else
-	{
-		sign = 1;
+		digit[i] = n % base;
+		n /= base;
+		i++;
 	}
 
-	digit = n % 10;
-	if (digit < 0)
-		digit *= -1;
-
-	count += _putnbr(n / 10);
-	count += _putchar('0' + digit);
+	while (i > 0)
+	{
+		i--;
+		count += _putchar('0' + digit[i]);
+	}
 
 	return (count);
 }
