@@ -1,7 +1,7 @@
 # Custom Printf Function (_printf)
 
 
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6us2zf64SfTDoLaYs0Wqid26zb48T3iSikw&usqp=CAU
+(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwilfredspace.hashnode.dev%2Fprintf-c-library-function&psig=AOvVaw1hJJnEgRgQ3nEWOAquJ0zg&ust=1690381753251000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKDV0_GIqoADFQAAAAAdAAAAABAJ)
 
 This is a custom implementation of the printf function in C, named `_printf`. It allows you to print formatted output to the standard output (stdout) or any other output stream you choose. It supports various format specifiers similar to the standard `printf` function.
 
