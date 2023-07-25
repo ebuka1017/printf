@@ -4,6 +4,13 @@
 
 This is a custom implementation of the printf function in C, named `_printf`. It allows you to print formatted output to the standard output (stdout) or any other output stream you choose. It supports various format specifiers similar to the standard `printf` function.
 
+## Contents
+-[Files](#files)
+-[How to Use](#how-to-use)
+-[Example Usage](#example-usage)
+-[Contact](#contact)
+
+
 ## Files:
 
 - `main.h`: Header file containing function prototypes and necessary includes.
@@ -87,7 +94,9 @@ int main(void)
 
 Please note that this is a simplified custom implementation of the printf function and may not cover all the edge cases or advanced features of the standard printf function. It serves as a basic example to understand how printf-like functions can be created. For production use, it is recommended to use the standard library's `printf` function.
 
+## Contact 
 
-**Author:** Isaac Okwuzi (ebuka1017) <br>
-**Organization:** alx_africa <br>
+**Author:** [Isaac Okwuzi](https://github.com/ebuka1017) <br>
+**Email:** [isaacokwuzi@gmail.com](mailto:isaacokwuzi@gmail.com)
+**Organization:** [alx_africa](https://alx_africa.com) <br>
 **Date:** June, 2023
