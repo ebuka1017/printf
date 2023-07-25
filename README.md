@@ -5,10 +5,10 @@
 This is a custom implementation of the printf function in C, named `_printf`. It allows you to print formatted output to the standard output (stdout) or any other output stream you choose. It supports various format specifiers similar to the standard `printf` function.
 
 ## Contents
--[Files](#files)
--[How to Use](#how-to-use)
--[Example Usage](#example-usage)
--[Contact](#contact)
+- [Files](#files)
+- [How to Use](#how-to-use)
+- [Example Usage](#example-usage)
+- [Contact](#contact)
 
 
 ## Files:
