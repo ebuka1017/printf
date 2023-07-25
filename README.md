@@ -39,22 +39,55 @@ This is a custom implementation of the printf function in C, named `_printf`. It
 ## Example Usage:
 
 ```c
+#include <limits.h>
+#include <stdio.h>
 #include "main.h"
 
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
 int main(void)
 {
-    char ch = 'A';
-    int num = 123;
-    char *str = "Hello, world!";
-    void *ptr = &num;
+    int len;
+    int len2;
+    unsigned int ui;
+    void *addr;
 
-    _printf("Character: %c\n", ch); // Output: Character: A
-    _printf("Number: %d\n", num);   // Output: Number: 123
-    _printf("String: %s\n", str);   // Output: String: Hello, world!
-    _printf("Pointer: %p\n", ptr); // Output: Pointer: 0x7ffcbcaea0bc
-
+    len = _printf("Let's try to printf a simple sentence.\n");
+    len2 = printf("Let's try to printf a simple sentence.\n");
+    ui = (unsigned int)INT_MAX + 1024;
+    addr = (void *)0x7ffe637541f0;
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("Negative:[%d]\n", -762534);
+    printf("Negative:[%d]\n", -762534);
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    _printf("Character:[%c]\n", 'H');
+    printf("Character:[%c]\n", 'H');
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+    _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
+    len = _printf("Percent:[%%]\n");
+    len2 = printf("Percent:[%%]\n");
+    _printf("Len:[%d]\n", len);
+    printf("Len:[%d]\n", len2);
+    _printf("Unknown:[%r]\n");
+    printf("Unknown:[%r]\n");
     return (0);
 }
 ```
 
 Please note that this is a simplified custom implementation of the printf function and may not cover all the edge cases or advanced features of the standard printf function. It serves as a basic example to understand how printf-like functions can be created. For production use, it is recommended to use the standard library's `printf` function.
+
+
+**Author:** Isaac Okwuzi (ebuka1017) <br>
+**Organization:** alx_africa <br>
+**Date:** June, 2023
